@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% include "header.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block styling %}
+    {{ super() }}
+    <link rel='stylesheet' href="static/css/styles.css">
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Register</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul class=flashes style="color:red;">
+    {% for message in messages %}
+      <li><p>{{ message }}</p></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% endwith %}
+
+      <!-- This is where your WTForm will go -->
+        {{ render_form(form, novalidate=True) }}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% include "header.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block styling %}
+    {{ super() }}
+    <link rel='stylesheet' href="../static/css/styles.css">
+{% endblock %}
+
+{% block title %}Edit Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+
+      <h1>Edit cafe</h1>
+
+      <!-- This is where your WTForm will go -->
+        {{ render_form(form, novalidate=True) }}
+	  <p class="space-above"><a href="{{ url_for('get_all_cafes') }}">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
